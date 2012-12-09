@@ -14,17 +14,17 @@ trait SunSurface {
 
     def upleft = changePosition(-1,-1)
 
-    def up = changePosition(0,-1)
+    def up = changePosition(-1,0)
 
-    def upright = changePosition(1,-1)
+    def upright = changePosition(-1,1)
 
-    def left = changePosition(-1,0)
+    def left = changePosition(0,-1)
 
-    def right = changePosition(1,0)
+    def right = changePosition(0,1)
 
-    def downleft = changePosition(-1,1)
+    def downleft = changePosition(1,-1)
 
-    def down = changePosition(0,1)
+    def down = changePosition(1,0)
 
     def downright = changePosition(1,1)
 

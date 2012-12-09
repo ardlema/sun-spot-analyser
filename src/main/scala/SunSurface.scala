@@ -6,11 +6,17 @@ trait SunSurface {
 
   type Sun = List[Spot]
 
-  val surface = createSurface(List(Position(1,1),Position(0,0)))
+  def createSurfaceFromSize(sizeOfTheSurface: Int): Surface = createSurface(createListOfPositionsFromSizeOfTheSurface(sizeOfTheSurface))
 
-  def createSurface(positions: List[(Position)]): Surface = { position: Position => validPosition(position, positions)}
+  def createListOfPositionsFromSizeOfTheSurface(size: Int): Seq[Position] = {
+       for(
+            x <- (0 to size-1);
+            y <- (0 to size-1)) yield Position(x,y)
+  }
 
-  def validPosition(p: Position, positions: List[Position]): Boolean = positions.contains(p)
+  def createSurface(positions: Seq[Position]): Surface = { position: Position => validPosition(position, positions)}
+
+  def validPosition(p: Position, positions: Seq[Position]): Boolean = positions.contains(p)
 
 
 }

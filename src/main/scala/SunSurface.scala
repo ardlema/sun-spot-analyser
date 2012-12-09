@@ -1,7 +1,6 @@
 
 trait SunSurface {
 
-
   type Surface = Position => Boolean
 
   type Sun = List[Spot]

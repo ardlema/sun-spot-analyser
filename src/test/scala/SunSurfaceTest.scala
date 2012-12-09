@@ -45,8 +45,26 @@ class SunSurfaceTest extends Spec with ShouldMatchers {
     }
   }
 
-  describe("valid position") {
+  describe("valid positions") {
 
+    it("should check all the valid positions") {
+      new SunSurface1 {
+
+        val surface = createSurfaceFromSize(2)
+
+        surface(Position(0,0)) should be(true)
+        surface(Position(1,0)) should be(true)
+        surface(Position(0,1)) should be(true)
+        surface(Position(1,1)) should be(true)
+
+        surface(Position(-1,0)) should be(false)
+        surface(Position(0,-1)) should be(false)
+        surface(Position(-1,-1)) should be(false)
+        surface(Position(2,2)) should be(false)
+
+
+      }
+    }
   }
 
 }

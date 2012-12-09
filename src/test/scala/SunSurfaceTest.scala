@@ -10,6 +10,18 @@ class SunSurfaceTest extends Spec with ShouldMatchers {
 
   }
 
+  describe("surface") {
+    it("should create the surface") {
+      new SunSurface1 {
+
+        def isLegal = surface(Position(1,1))
+        assert(isLegal)
+
+
+      }
+    }
+  }
+
   describe("neighbours") {
     it("should return all the neighbors for a Spot") {
       new SunSurface1 {

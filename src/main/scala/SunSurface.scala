@@ -7,6 +7,12 @@ trait SunSurface {
 
   type Surface = Position => Boolean
 
+  val surface = createSurface(List(Position(1,1)))
+
+  def createSurface(positions: List[Position]): Surface = { position: Position => validPosition(position, positions)}
+
+  def validPosition(p: Position, positions: List[Position]): Boolean = positions.contains(p)
+
 
   case class Spot(position: Position) {
 
@@ -28,7 +34,13 @@ trait SunSurface {
 
     def downright = changePosition(1,1)
 
+
+
     def neighbors: List[Spot] = upleft :: up :: upright :: left :: right :: downleft :: down :: downright :: List()
+
+    /*def legalNeighbors: List[Spot] = {
+      for (neighbor <- neighbors if neighbor.isLegal) yield neighbor
+    }*/
 
 
   }

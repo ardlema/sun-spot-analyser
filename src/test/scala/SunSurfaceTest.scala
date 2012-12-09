@@ -51,4 +51,17 @@ class SunSurfaceTest extends Spec with ShouldMatchers {
       }
     }
   }
+
+  describe("legal neighbours") {
+    it("should return all the legal neighbors for a Spot") {
+      new SunSurface1 {
+        val position = Position(1,1)
+
+        val spot = Spot(position)
+
+        spot.legalNeighbors.size should be(1)
+      }
+    }
+
+  }
 }

@@ -1,4 +1,4 @@
-case class Spot(position: Position, heat: Int = 0) extends SunSurfaceResolver with SunSurface{
+case class Spot(position: Position, heat: Int = 0) extends SunSurfaceResolver {
 
   def changePosition(newX: Int, newY: Int) = Spot(position.move(newX, newY),heat)
 

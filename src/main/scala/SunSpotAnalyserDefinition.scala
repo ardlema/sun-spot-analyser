@@ -7,7 +7,7 @@ trait SunSpotAnalyserDefinition {
 
   def createSurface(positions: Seq[Position]): Surface = { position: Position => validPosition(position, positions)}
 
-  def validPosition(p: Position, positions: Seq[Position]): Boolean = {"Positions: "+positions
+  def validPosition(p: Position, positions: Seq[Position]): Boolean = {
     positions.contains(p)
   }
 
@@ -33,16 +33,15 @@ trait SunSpotAnalyserDefinition {
 
     def downright = changePosition(1,1)
 
-    def changePosition(newX: Int, newY: Int) = Spot(position.move(newX, newY),heat)
+    def changePosition(newX: Int, newY: Int) = Spot(position.move(newX, newY))
 
-    def neighbors: List[Spot] = upleft :: up :: upright :: left :: right :: downleft :: down :: downright :: List()
+    def neighbors: Seq[Spot] = upleft :: up :: upright :: left :: right :: downleft :: down :: downright :: List()
 
-    def legalNeighbors: List[Spot] = {
+    def legalNeighbors: Seq[Spot] = {
       for (neighbor <- neighbors if isLegal(neighbor.position)) yield neighbor
     }
 
     def isLegal(neighbor: Position) = surface(neighbor)
-
 
   }
 

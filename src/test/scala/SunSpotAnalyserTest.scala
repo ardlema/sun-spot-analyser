@@ -97,7 +97,7 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
   }
 
   describe("legal neighbours") {
-    it("should return all the legal neighbors for a central spot") {
+    it("should return all the legal neighbors for the central spot") {
       new Solution {
         override val listOfPositions = createListOfPositionsFromSizeOfTheSurface(3)
 
@@ -109,7 +109,7 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
       }
     }
 
-    it("should return all the legal neighbors for a limit spot",Tag("wip")) {
+    it("should return all the legal neighbors for the first spot") {
       new Solution {
         override val listOfPositions = createListOfPositionsFromSizeOfTheSurface(3)
 
@@ -117,10 +117,23 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
 
         val spot = Spot(position)
 
-        //println(spot.legalNeighbors)
         spot.legalNeighbors.size should be(3)
       }
     }
+
+    it("should return all the legal neighbors for a border spot") {
+      new Solution {
+        override val listOfPositions = createListOfPositionsFromSizeOfTheSurface(3)
+
+        val position = Position(2,1)
+
+        val spot = Spot(position)
+
+        spot.legalNeighbors.size should be(5)
+      }
+    }
+
+
 
   }
 }

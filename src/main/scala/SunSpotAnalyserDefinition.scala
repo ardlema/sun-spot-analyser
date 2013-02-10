@@ -38,10 +38,10 @@ trait SunSpotAnalyserDefinition {
     def neighbors: List[Spot] = upleft :: up :: upright :: left :: right :: downleft :: down :: downright :: List()
 
     def legalNeighbors: List[Spot] = {
-      for (neighbor <- neighbors if isLegal) yield neighbor
+      for (neighbor <- neighbors if isLegal(neighbor.position)) yield neighbor
     }
 
-    def isLegal = surface(position)
+    def isLegal(neighbor: Position) = surface(neighbor)
 
 
   }

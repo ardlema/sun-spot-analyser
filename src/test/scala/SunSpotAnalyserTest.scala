@@ -1,4 +1,4 @@
-import org.scalatest.FunSpec
+import org.scalatest.{Tag, FunSpec}
 import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.matchers.ShouldMatchers
@@ -106,11 +106,10 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
         val spot = Spot(position)
 
         spot.legalNeighbors.size should be(8)
-        spot.isLegal
       }
     }
 
-    it("should return all the legal neighbors for a limit spot") {
+    it("should return all the legal neighbors for a limit spot",Tag("wip")) {
       new Solution {
         override val listOfPositions = createListOfPositionsFromSizeOfTheSurface(3)
 
@@ -118,8 +117,8 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
 
         val spot = Spot(position)
 
+        //println(spot.legalNeighbors)
         spot.legalNeighbors.size should be(3)
-        spot.isLegal
       }
     }
 

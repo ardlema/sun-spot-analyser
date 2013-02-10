@@ -1,12 +1,21 @@
 
-trait SunSurface {
+trait SunSurface extends SunSpotAnalyserDefinition {
 
-  type Surface = Position => Boolean
+  lazy val surface: Surface = createSurface(listOfPositions)
+
+  val listOfPositions = createListOfPositionsFromSizeOfTheSurface(2)
 
 
-  def createSurface(positions: Seq[Position]): Surface = { position: Position => validPosition(position, positions)}
+  def createListOfPositionsFromSizeOfTheSurface(size: Int): Seq[Position] = {
+    for(
+      x <- (0 to size-1);
+      y <- (0 to size-1)) yield Position(x,y)
+  }
 
-  def validPosition(p: Position, positions: Seq[Position]): Boolean = positions.contains(p)
+  def getResultsAsList(theNumberOfResults: Int, theSizeOfTheGrid: Int, listOfSpaceDelimitedNumbers: List[Int]): List[Spot] = {
+
+    List()
+  }
 
 
 }

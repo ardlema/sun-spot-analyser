@@ -1,19 +1,32 @@
+trait SunSurfaceResolver extends SunSpotAnalyserDefinition {
 
-class SunSurfaceResolver(theNumberOfResults: Int = 0, theSizeOfTheGrid: Int = 0, listOfSpaceDelimitedNumbers: List[Int] = List())
-  extends SunSurface{
 
-  val listOfPositions = createListOfPositionsFromSizeOfTheSurface(theSizeOfTheGrid)
+  //val sun = createSun(listOfPositions, temperatures)
 
-  val surface = createSurface(listOfPositions)
+  def createSun(positions: List[Position], temps: List[Int]): List[Spot] = {
 
-  def createListOfPositionsFromSizeOfTheSurface(size: Int): Seq[Position] = {
-    for(
-      x <- (0 to size-1);
-      y <- (0 to size-1)) yield Position(x,y)
+
+
+    //for (position <- positions) yield Spot(Position(position.x, position.y), temps)
+
+    List()
+
   }
 
-  def getResultsAsList(theNumberOfResults: Int, theSizeOfTheGrid: Int, listOfSpaceDelimitedNumbers: List[Int]): List[Spot] = {
+  def obtainSunTemperatureFromSpots(spots: List[Spot]): List[Spot] = {
 
-       List()
+    def totalHeatOfTheNeighbors(listOfNeighbors: List[Spot]) {
+      listOfNeighbors.foldLeft(0)(_ + _.heat)
+    }
+
+    /*  for (spot <- spots ;
+           neighbors <- spot.legalNeighbors;
+           totalHeat = totalHeatOfTheNeighbors(neighbors)
+        ) yield Spot(Position(spot._1, totalHeat))*/
+
+    List()
+
+
   }
+
 }

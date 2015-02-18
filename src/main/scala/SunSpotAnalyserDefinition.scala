@@ -1,4 +1,5 @@
 
+
 trait SunSpotAnalyserDefinition {
 
   type Surface = Position => Boolean

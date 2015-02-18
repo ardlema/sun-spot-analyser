@@ -1,15 +1,8 @@
-import org.scalatest.{Tag, FunSpec}
-import org.junit.runner.RunWith
-import org.scalatest.junit.JUnitRunner
-import org.scalatest.matchers.ShouldMatchers
+import org.scalatest._
 
-@RunWith(classOf[JUnitRunner])
-class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
+class SunSpotAnalyserTest extends FunSpec with ShouldMatchers {
 
-  trait Solution extends SunSpotAnalyserDefinition with SunSurface {
-
-  }
-
+  trait Solution extends SunSurface
 
   describe("create list of positions") {
     it("should return the surface with the correct lenght") {
@@ -17,7 +10,6 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
 
         val list = createListOfPositionsFromSizeOfTheSurface(3)
         list.size should be(9)
-
       }
     }
 
@@ -26,7 +18,6 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
 
         val list = createListOfPositionsFromSizeOfTheSurface(0)
         list.size should be(0)
-
       }
     }
 
@@ -40,18 +31,13 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
         list should contain(Position(1,0))
         list should contain(Position(1,1))
         list should not (contain(Position(1,2)))
-
-
       }
     }
   }
 
   describe("valid positions") {
-
     it("should check all the valid positions") {
       new Solution {
-
-        //val list = createListOfPositionsFromSizeOfTheSurface(2)
 
         surface(Position(0,0)) should be(true)
         surface(Position(1,0)) should be(true)
@@ -69,20 +55,18 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
   describe("neighbours") {
     it("should return all the neighbors for a Spot") {
       new Solution {
+
         val position = Position(1,1)
-
         val spot = Spot(position)
-
         spot.neighbors.size should be(8)
       }
     }
 
     it("should create the neighbors properly") {
       new Solution {
+
         val position = Position(1,1)
-
         val spot = Spot(position)
-
         assert(spot.upleft == Spot(Position(0,0)))
         assert(spot.up == Spot(Position(0,1)))
         assert(spot.upright == Spot(Position(0,2)))
@@ -91,7 +75,6 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
         assert(spot.downleft == Spot(Position(2,0)))
         assert(spot.down == Spot(Position(2,1)))
         assert(spot.downright == Spot(Position(2,2)))
-
       }
     }
   }
@@ -99,41 +82,32 @@ class SunSpotAnalyserTest extends FunSpec with ShouldMatchers{
   describe("legal neighbours") {
     it("should return all the legal neighbors for the central spot") {
       new Solution {
+
         override val listOfPositions = createListOfPositionsFromSizeOfTheSurface(3)
-
         val position = Position(1,1)
-
         val spot = Spot(position)
-
         spot.legalNeighbors.size should be(8)
       }
     }
 
     it("should return all the legal neighbors for the first spot") {
       new Solution {
+
         override val listOfPositions = createListOfPositionsFromSizeOfTheSurface(3)
-
         val position = Position(0,0)
-
         val spot = Spot(position)
-
         spot.legalNeighbors.size should be(3)
       }
     }
 
     it("should return all the legal neighbors for a border spot") {
       new Solution {
+
         override val listOfPositions = createListOfPositionsFromSizeOfTheSurface(3)
-
         val position = Position(2,1)
-
         val spot = Spot(position)
-
         spot.legalNeighbors.size should be(5)
       }
     }
-
-
-
   }
 }

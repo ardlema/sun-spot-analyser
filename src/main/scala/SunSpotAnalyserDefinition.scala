@@ -1,12 +1,11 @@
 
-
 trait SunSpotAnalyserDefinition {
 
   type Surface = Position => Boolean
 
   val surface: Surface
 
-  def createSurface(positions: Seq[Position]): Surface = { position: Position => validPosition(position, positions)}
+  def createSurface(positions: Seq[Position]): Surface = { position: Position => validPosition(position, positions) }
 
   def validPosition(p: Position, positions: Seq[Position]): Boolean = {
     positions.contains(p)
@@ -36,20 +35,12 @@ trait SunSpotAnalyserDefinition {
 
     def changePosition(newX: Int, newY: Int) = Spot(position.move(newX, newY))
 
-    def neighbors: Seq[Spot] = upleft :: up :: upright :: left :: right :: downleft :: down :: downright :: List()
+    lazy val neighbors: Seq[Spot] = upleft :: up :: upright :: left :: right :: downleft :: down :: downright :: List()
 
     def legalNeighbors: Seq[Spot] = {
       for (neighbor <- neighbors if isLegal(neighbor.position)) yield neighbor
     }
 
     def isLegal(neighbor: Position) = surface(neighbor)
-
   }
-
-
-
-
-
-
-
 }
